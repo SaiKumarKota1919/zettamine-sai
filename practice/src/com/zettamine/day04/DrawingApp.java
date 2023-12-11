@@ -1,4 +1,4 @@
-package com.zettamine.day04;
+ package com.zettamine.day04;
 
 import java.util.Scanner;
 
@@ -23,7 +23,7 @@ public class DrawingApp {
 			System.out.print("enter breadth of rectangle : ");
 			int breadth = scanner.nextInt();
 			scanner.nextLine();
-			shape = new Rectangle(length, breadth);
+			shape = new Rectangle(color,length, breadth);
 			shape.setColor(color);
 			drawShape(shape);
 			break;
@@ -33,8 +33,7 @@ public class DrawingApp {
 			System.out.print("enter radius of Circle : ");
 			int radius = scanner.nextInt();
 			scanner.nextLine();
-			shape = new Circle(radius);
-			shape.setColor(circleColor);
+			shape = new Circle(circleColor,radius);
 			drawShape(shape);
 			break;
 		case 3: 
@@ -45,8 +44,7 @@ public class DrawingApp {
 			System.out.print("enter base of Triangle : ");
 			int base = scanner.nextInt();
 			scanner.nextLine();
-			shape = new Triangle(height,base);
-			shape.setColor(triangleColor);
+			shape = new Triangle(triangleColor,height,base);
 			drawShape(shape);
 			break;
 		default: System.out.println("invalid shape slection :: try again --closing the app ");
