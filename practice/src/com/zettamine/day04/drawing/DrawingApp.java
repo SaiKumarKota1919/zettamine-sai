@@ -1,4 +1,4 @@
- package com.zettamine.day04;
+ package com.zettamine.day04.drawing;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class DrawingApp {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		Shape shape;
-		System.out.print("Which shape do you want to woark with? [1.Rectangle | 2.Circle | 3.Triangle] :");
+		System.out.print("Which shape do you want to work with? [1.Rectangle | 2.Circle | 3.Triangle |4.cube |5.sphere] :");
 		int choice = scanner.nextInt();
 		scanner.nextLine();
 		switch(choice)

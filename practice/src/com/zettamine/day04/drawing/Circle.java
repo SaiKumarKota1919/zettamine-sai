@@ -1,4 +1,4 @@
-package com.zettamine.day04;
+package com.zettamine.day04.drawing;
 
 public class Circle extends Shape {
 

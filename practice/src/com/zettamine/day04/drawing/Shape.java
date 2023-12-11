@@ -1,4 +1,4 @@
-package com.zettamine.day04;
+package com.zettamine.day04.drawing;
 
 abstract class Shape {
 	
@@ -18,5 +18,6 @@ abstract class Shape {
 		this.color = color;
 	}
 	abstract double area();
+	
 
 }

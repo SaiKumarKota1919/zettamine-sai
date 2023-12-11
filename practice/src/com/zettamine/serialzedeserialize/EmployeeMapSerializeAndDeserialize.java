@@ -10,18 +10,20 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class EmployeeMapSerializeAndDeserialize {
 	private static final String FILEPATH = "C:\\Users\\Kota Sai Kumr\\Desktop\\employee\\serializedata.ser";
 
 	public static void main(String[] args) {
 
-		Map<Employee, Set<Certification>> empMap = new HashMap<>();
+		Map<Employee, Set<Certification>> empMap = new TreeMap<>();
 
 		Certification azureFundamentals = new Certification(125, "AZ-900", 1);
 		Certification azureIot = new Certification(121, "AZ-220", 2);
 		Certification azureSupportEngineer = new Certification(120, "AZ-720", 3);
-		Certification azureDataFund = new Certification(122, "DP-900", 4);
+		Certification azureDataFund = new Certification(122, "DP-900", 3);
 
 		empMap.put(new ContractEmployee(1001, 201, "vijay", 10), getCertificationsSet());
 		empMap.put(new ContractEmployee(1002, 202, "surya", 20),
@@ -79,7 +81,7 @@ public class EmployeeMapSerializeAndDeserialize {
 
 	private static Set<Certification> getCertificationsSet(Certification... cert) {
 
-		Set<Certification> certificationsSet = new HashSet<Certification>();
+		Set<Certification> certificationsSet = new TreeSet<Certification>();
 
 		for (Certification c : cert) {
 			certificationsSet.add(c);

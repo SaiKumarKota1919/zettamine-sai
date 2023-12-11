@@ -1,4 +1,4 @@
-package com.zettamine.day03.contacthostler;
+package com.zettamine.day04.composition;
 
 import java.util.Scanner;
 
@@ -7,45 +7,24 @@ import com.zettamine.day01.NameValidate;
 public class HostelMain {
 
 	public static void main(String[] args) {
-		Hosteller hosteller = getHostellerDetails();
+		Student student = getStudentObj();
 		System.out.println("-".repeat(30));
-		System.out.println("Student ID: "+hosteller.getStudentId());
-		System.out.println("Student Name: "+hosteller.getName());
-		System.out.println("Department ID: "+hosteller.getDepartmentId());
-		System.out.println("Student Gender: "+hosteller.getGender());
-		System.out.println("Student Phone No: "+hosteller.getPhone());
-		System.out.println("Hostel Name: "+hosteller.getHostelName());
-		System.out.println("Room No: "+hosteller.getRoomNumber());
+		System.out.println("Student ID: "+student.getDepartmentId());
+		System.out.println("Student Name: "+student.getName());
+		System.out.println("Department ID: "+student.getDepartmentId());
+		System.out.println("Student Gender: "+student.getGender());
+		System.out.println("Student Phone No: "+student.getPhone());
+		System.out.println("Hostel Name: "+student.getHosteller().getHostelName());
+		System.out.println("Room No: "+student.getHosteller().getRoomNumber());
 		
 		
 	}
 	
-//	Student ID: 101
-//	Student Name: John 
-//	Department ID: 1  
-//	Student Gender: Male     
-//	Student Phone No: 9876543121   
-//	Hostel Name: YMCA     
-//	Room No: 11
-//	Enter the Student Details & Hostel Details:
-//		Student ID:   101
-//		Student Name:  John
-//		Department Id:  1
-//		Gender[M/F]:  M
-//		Phone Number: 9848586878
-//		Hostel Name:  YMCA
-//		Room Number:  10
-//		Modify Room Number(Y/N): Y
-//		New Room Number: 11
-//		Modify Phone Number(Y/N): Y
-//		New Phone Number: 9876543128
-//		Sample Output 1:
-//		The Student Details are as follows:
-//
+
 
 
 	
-	public static Hosteller getHostellerDetails() {
+	public static Student getStudentObj() {
 		Scanner scanner = new Scanner(System.in);
 		Hosteller hosteller;
 		System.out.println("Enter the Student Details & Hostel Details:");
@@ -115,8 +94,7 @@ public class HostelMain {
 			gender = "Female";
 		}
 		
-		hosteller = new Hosteller(studentId, studentName, departmentId, gender, 
-											phoneNumber, hostelName, roomNumber); 
-		return hosteller;
+		Hosteller hostel = new Hosteller(hostelName, roomNumber);
+		return new Student(studentId,studentName, departmentId, gender, phoneNumber, hostel);
 	}
 }
