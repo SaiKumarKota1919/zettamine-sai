@@ -28,4 +28,11 @@ public class Circle extends Shape {
 		return PI*(radius*radius);
 	}
 
+
+	@Override
+	double volume() {
+		// TODO Auto-generated method stub
+		return -1;
+	}
+
 }

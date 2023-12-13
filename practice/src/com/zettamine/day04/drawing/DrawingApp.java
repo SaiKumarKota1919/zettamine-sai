@@ -47,6 +47,29 @@ public class DrawingApp {
 			shape = new Triangle(triangleColor,height,base);
 			drawShape(shape);
 			break;
+		case 4: 
+			System.out.print("enter color of Cube : ");
+			String cubeColor = scanner.nextLine();
+			System.out.print("enter length of cube : ");
+			int cubeLength = scanner.nextInt();
+			System.out.print("enter width of cube : ");
+			int cubeWidth = scanner.nextInt();
+			System.out.print("enter height of cube : ");
+			int cubeHeight = scanner.nextInt();
+			scanner.nextLine();
+			shape = new Cube(cubeLength, cubeWidth, cubeHeight, cubeColor);
+			drawShape(shape);
+			break;
+		case 5: 
+			System.out.print("enter color of  sphere : ");
+			String sphereColor = scanner.nextLine();
+			System.out.print("enter radius of Circle : ");
+			int sphereRadius = scanner.nextInt();
+			scanner.nextLine();
+			shape = new Sphere(sphereRadius,sphereColor);
+			
+			drawShape(shape);
+			break;
 		default: System.out.println("invalid shape slection :: try again --closing the app ");
 			
 			
@@ -59,7 +82,11 @@ public class DrawingApp {
 		String name = shape.getClass().getSimpleName().toUpperCase();
 		System.out.println("===========SHAPE SELECTED : "+name+" ============");
 		System.out.println("color of \""+name+"\" is "+shape.getColor());
-		System.out.printf("area of \""+name+"\" is %.2f",shape.area());
+		System.out.printf("area of \""+name+"\" is %.2f\n",shape.area());
+		if(shape instanceof Spatial)
+		{
+			System.out.printf("Volume of \""+name+"\" is %.2f",shape.volume());
+		}
 		
 	}
 }

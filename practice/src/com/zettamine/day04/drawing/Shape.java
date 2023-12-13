@@ -18,6 +18,7 @@ abstract class Shape {
 		this.color = color;
 	}
 	abstract double area();
+	abstract double volume();
 	
 
 }

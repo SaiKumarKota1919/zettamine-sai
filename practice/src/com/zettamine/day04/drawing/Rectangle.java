@@ -18,6 +18,12 @@ public class Rectangle extends Shape{
 		return length*breadth;
 	}
 
+	@Override
+	double volume() {
+		// TODO Auto-generated method stub
+		return -1;
+	}
+
 	
 	
 

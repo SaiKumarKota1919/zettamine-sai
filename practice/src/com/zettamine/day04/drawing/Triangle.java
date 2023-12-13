@@ -20,4 +20,13 @@ public class Triangle extends Shape {
 		return 0.5*height*base;
 	}
 
+
+
+
+	@Override
+	double volume() {
+		// TODO Auto-generated method stub
+		return -1;
+	}
+
 }

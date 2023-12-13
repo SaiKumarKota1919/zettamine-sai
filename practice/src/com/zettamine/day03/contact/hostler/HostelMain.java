@@ -1,4 +1,4 @@
-package com.zettamine.day03.contacthostler;
+package com.zettamine.day03.contact.hostler;
 
 import java.util.Scanner;
 

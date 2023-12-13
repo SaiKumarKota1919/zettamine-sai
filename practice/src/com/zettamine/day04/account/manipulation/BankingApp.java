@@ -1,4 +1,4 @@
-package com.zettamine.day04.accountmanipulation;
+package com.zettamine.day04.account.manipulation;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.zettamine.day03.contacthostler;
+package com.zettamine.day03.contact.hostler;
 
 public class Student {
 	protected int studentId;
