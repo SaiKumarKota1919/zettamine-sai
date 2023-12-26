@@ -14,7 +14,7 @@ public class ProductEntry {
 	static File file = new File("product.ser");
 
 	public static void main(String[] args) {
-
+		Product product =null;
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.print("Enter no of products :");
@@ -35,7 +35,12 @@ public class ProductEntry {
 		System.out.print("enter product id to serach : ");
 		int keyId = scanner.nextInt();
 		// getting product based on key by calling a method
-		Product product = getProductById(keyId);
+		try {
+			product = getProductById(keyId);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		if (product == null) {
 			
 			System.out.println("product with id " + keyId + " is not available");
@@ -45,25 +50,33 @@ public class ProductEntry {
 		}
 	}
 
-	private static Product getProductById(int keyId) {
+	private static Product getProductById(int keyId) throws ClassNotFoundException {
 
+		
+	
 		try(InputStream inputStream = new FileInputStream(file);
 				ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);){
 			
 			
 			while (true) {
-				try {
+				
+			
 					// reading each object from file and type casting into Product
-					Product product = (Product) objectInputStream.readObject();
-					//comparing id
-					if (product.getProductId() == keyId) {
-						// if product found return product
-						return product;
-					}
+				try {
+					Object object = objectInputStream.readObject();
+					if(object!=null)
+					{
+						Product product = (Product)object;
+						//comparing id
+						if (product.getProductId() == keyId) {
+							// if product found return product
+							return product;
+						}
+					} 
 				} catch (Exception e) {
-					//if eof is reached exception is raised and break the loop
 					break;
 				}
+					
 			}
 
 		} catch (FileNotFoundException e) {

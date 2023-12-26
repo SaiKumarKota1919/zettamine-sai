@@ -2,6 +2,7 @@ package com.zettamine.day04.drawing;
 
 abstract class Shape {
 	
+	
 	String color;
 	
 	

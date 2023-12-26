@@ -60,7 +60,7 @@ public class CopyFiles {
 		File[] filesList = sourceFile.listFiles();
 		if (filesList != null) {
 			for (File file : filesList) {
-				File newFile = new File(destinationFile, file.getName()); // crating a file instance for destination
+				File newFile = new File(destinationFile, file.getName());
 				// checking  inside file is there any director 
 				if (file.isDirectory()) {
 					
