@@ -1,0 +1,67 @@
+package com.zm.ams.dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.config.JdbcConnectionFactory;
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.Amc;
+import com.zm.ams.marker.SearchCriteria;
+
+public class AmcJdbcDao implements AmsDao<Amc,SearchCriteria> {
+
+	private Connection connection = JdbcConnectionFactory.getJdbcConnection();
+	@Override
+	public Optional<Amc> get(int id) {
+		//Optional.ofNullable();
+		return Optional.empty();
+	}
+
+	@Override
+	public List<Amc> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Amc> getBySearchCriteria(SearchCriteria criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(Amc amc) throws SQLException {
+	PreparedStatement preparedStatement = connection
+										.prepareStatement("insert into ams.amc"
+										 + "(amc_reg_id,amc_name,amc_remarks,website"
+										 + ",addr_line1,addr_line2,state,city"
+										 + ",zipcode,created_on,created_by,updated_by"
+										 + ",updated_on,active)"
+										 + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	preparedStatement.setString(1, );
+	
+		
+	}
+
+	@Override
+	public void update(Amc t, String[] params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Amc t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getId(Amc t) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

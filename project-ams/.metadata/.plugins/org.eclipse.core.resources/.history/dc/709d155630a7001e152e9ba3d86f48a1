@@ -1,0 +1,10 @@
+package com.zm.ams.services;
+
+import java.sql.SQLException;
+
+import com.zm.ams.dto.Amc;
+
+public interface AmcService {
+	void save(Amc amc) throws SQLException;
+
+}

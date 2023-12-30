@@ -1,0 +1,22 @@
+package com.zm.ams.config;
+
+import java.sql.Connection;
+import java.util.ResourceBundle;
+
+public class JdbcConnectionFactory {
+	private static Connection connection =null;
+	public static Connection getJdbcConnection() {
+		
+		if(connection==null)
+		{
+			ResourceBundle resourceBundle = ResourceBundle.getBundle("com.zm.ams.config.jdbc-config");
+			
+		}
+		else {
+			return connection;
+		}
+		
+		
+	}
+
+}

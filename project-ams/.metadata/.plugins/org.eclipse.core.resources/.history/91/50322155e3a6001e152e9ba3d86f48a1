@@ -1,0 +1,10 @@
+package com.zm.ams.services;
+
+import com.zm.ams.dto.AppraisalLoc;
+
+public interface AppraisalLocationService {
+	
+	void addAppraisalLocation(AppraisalLoc appraisalLoc);
+
+
+}

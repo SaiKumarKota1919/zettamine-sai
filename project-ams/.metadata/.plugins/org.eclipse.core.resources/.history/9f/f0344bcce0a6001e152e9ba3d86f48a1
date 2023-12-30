@@ -1,0 +1,50 @@
+package com.zm.ams.dao.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.AmcSearchCriteria;
+import com.zm.ams.dto.AppraisalLoc;
+
+public class AppraisalLocationDaoImpl implements AmsDao<AppraisalLoc,AmcSearchCriteria> {
+
+	@Override
+	public Optional<AppraisalLoc> get(int id) {
+		return Optional.empty();
+	}
+
+	@Override
+	public List<AppraisalLoc> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AppraisalLoc> getBySearchCriteria(AmcSearchCriteria criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(AppraisalLoc t)  throws SQLException{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(AppraisalLoc t, String... params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(AppraisalLoc t) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

@@ -1,0 +1,9 @@
+package com.zm.ams.config;
+
+import java.sql.Connection;
+
+public class JdbcConnectionFactory {
+	Connection connection =null;
+	
+
+}

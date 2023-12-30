@@ -1,0 +1,11 @@
+package com.zm.ams.dto;
+
+import com.zm.ams.marker.SearchCriteria;
+
+public class AmcSearchCriteria implements SearchCriteria {
+	private String amcName;
+	private String state;
+	private String city;
+	
+	
+}

@@ -1,0 +1,55 @@
+package com.zm.ams.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dao.impl.AppraisalLocationDaoImpl;
+import com.zm.ams.dto.AmcSearchCriteria;
+import com.zm.ams.dto.AppraisalLoc;
+
+@WebServlet("/add-location")
+public class AppraisalLocationController extends HttpServlet {
+	
+	
+	private static final long serialVersionUID = 1L;
+	
+       
+  
+    public AppraisalLocationController() {
+        super();
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+											throws ServletException, IOException {
+			
+			AppraisalLoc appraisalLoc = new AppraisalLoc(request.getParameter("state")
+					                                    ,request.getParameter("city"));
+			AmsDao<AppraisalLoc, AmcSearchCriteria> amsDao = new AppraisalLocationDaoImpl();
+			
+			try {
+				amsDao.save(appraisalLoc);
+				response.sendRedirect("home.jsp");
+			} catch (SQLException e) {
+				
+				
+				
+				e.printStackTrace();
+			}
+	
+	
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+											throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

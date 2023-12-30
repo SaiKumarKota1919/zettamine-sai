@@ -1,0 +1,8 @@
+package com.zm.ams.services;
+
+import com.zm.ams.dto.Amc;
+
+public interface AmcService {
+	void save(Amc amc);
+
+}

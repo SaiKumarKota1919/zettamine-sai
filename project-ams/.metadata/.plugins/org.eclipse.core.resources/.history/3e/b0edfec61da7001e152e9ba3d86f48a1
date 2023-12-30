@@ -1,0 +1,17 @@
+package com.zm.ams.services.impl;
+
+import java.sql.SQLException;
+
+import com.zm.ams.dto.Amc;
+import com.zm.ams.services.AmcService;
+
+public class AmcServiceImpl implements AmcService {
+
+	@Override
+	public void save(Amc amc) throws SQLExceptionq {
+		amc.setAmcName(amc.getAmcName().toUpperCase());
+		System.out.println(amc.getAmcName());
+		
+	}
+
+}

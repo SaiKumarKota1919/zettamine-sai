@@ -1,0 +1,5 @@
+package com.zm.ams.marker;
+
+public interface DaoAccessible {
+
+}

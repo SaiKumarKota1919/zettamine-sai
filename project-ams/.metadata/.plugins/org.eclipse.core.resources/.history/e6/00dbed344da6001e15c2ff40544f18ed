@@ -1,0 +1,15 @@
+package com.zm.ams.config;
+
+import java.sql.Connection;
+import java.util.ResourceBundle;
+
+public class JdbcConnectionFactory {
+	Connection connection =null;
+	public static Connection getJdbcConnection() {
+		
+		if(conne)
+		ResourceBundle resourceBundle = 
+		
+	}
+
+}

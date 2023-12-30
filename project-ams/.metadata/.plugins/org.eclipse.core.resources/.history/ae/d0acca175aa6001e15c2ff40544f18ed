@@ -1,0 +1,59 @@
+package com.zm.ams.dao.impl;
+
+import java.sql.Connection;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.config.JdbcConnectionFactory;
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.AmcSearchCriteria;
+import com.zm.ams.dto.User;
+
+public class UserDao implements AmsDao<User,AmcSearchCriteria>{
+
+	@Override
+	public Optional<User> get(int id) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public List<User> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> getBySearchCriteria(AmcSearchCriteria criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(User t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(User t, String[] params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(User t) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public boolean validateUser(User user)
+	{
+		Connection connection = JdbcConnectionFactory.getJdbcConnection();
+		Statement statement = connection.createStatement();
+		
+		
+		return false;
+	}
+
+}

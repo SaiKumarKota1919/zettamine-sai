@@ -1,0 +1,23 @@
+package com.zm.ams.services.impl;
+
+import com.zm.ams.dao.impl.UserDao;
+import com.zm.ams.dto.User;
+import com.zm.ams.services.UserService;
+
+public class UserServiceImpl implements UserService {
+
+	UserDao userDao;
+	
+	public UserServiceImpl()
+	{
+		userDao= new UserDao();
+	}
+	
+	@Override
+	public boolean validateUser(User user) {
+		
+		return false;
+	}
+	
+
+}

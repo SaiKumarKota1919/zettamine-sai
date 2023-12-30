@@ -1,0 +1,8 @@
+package com.zm.ams.dao.impl;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.AppraisalLoc;
+
+public class AmcAppraisalLocDao implements AmsDao<AppraisalLoc, SearchCriteria>{
+
+}

@@ -1,0 +1,13 @@
+1703854223976	Copy package
+1703854233997	Delete element
+1703854274422	Delete element
+1703854286609	Delete element
+1703867202456	Rename resource 'login.jsp'
+1703871208895	Delete element
+1703871839910	Delete element
+1703917230241	Move 'add-appraisal-loc.jsp' to 'webapp'
+1703928764916	Rename type 'DaoAccessible'
+1703941821641	Rename type 'AppraisalManagementCompany'
+1703943584581	Rename type 'AppraisalManagementCompanyJdbcDao'
+1703943608132	Rename type 'AppraisalLocationDaoImpl'
+1703955094876	Rename method 'addAppraisalLocation'

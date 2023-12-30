@@ -1,0 +1,20 @@
+package com.zm.ams.services.impl;
+
+import com.zm.ams.dto.AmcAppraisalLoc;
+import com.zm.ams.services.AmcAppraisalLocationService;
+
+public class AmcAppraisalLocServiceImpl implements AmcAppraisalLocationService{
+
+	@Override
+	public void save(AmcAppraisalLoc amcAppraisalLoc) {
+		
+		
+	}
+
+	@Override
+	public boolean isExist(AmcAppraisalLoc amcAppraisalLoc) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

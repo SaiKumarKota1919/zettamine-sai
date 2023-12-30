@@ -1,0 +1,10 @@
+package com.zm.ams.services;
+
+import com.zm.ams.dto.AmcAppraisalLoc;
+
+public interface AmcAppraisalLocationService {
+	
+	void save(AmcAppraisalLoc amcAppraisalLoc);
+	boolean isExist(AmcAppraisalLoc amcAppraisalLoc);
+
+}

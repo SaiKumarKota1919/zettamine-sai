@@ -1,0 +1,9 @@
+package com.zm.ams.dao;
+
+import com.zm.ams.marker.DaoAccessible;
+import com.zm.ams.marker.SearchCriteria;
+
+public interface AmsDao<T extends DaoAccessible, S extends SearchCriteria> {
+
+	
+}

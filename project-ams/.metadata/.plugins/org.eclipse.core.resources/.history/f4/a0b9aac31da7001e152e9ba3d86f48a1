@@ -1,0 +1,15 @@
+package com.zm.ams.services.impl;
+
+import com.zm.ams.dto.Amc;
+import com.zm.ams.services.AmcService;
+
+public class AmcServiceImpl implements AmcService {
+
+	@Override
+	public void save(Amc amc) {
+		amc.setAmcName(amc.getAmcName().toUpperCase());
+		System.out.println(amc.getAmcName());
+		
+	}
+
+}

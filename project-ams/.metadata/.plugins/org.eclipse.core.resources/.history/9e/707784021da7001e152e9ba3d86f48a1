@@ -1,0 +1,13 @@
+package com.zm.ams.services;
+
+import java.sql.SQLException;
+
+import com.zm.ams.dto.User;
+
+public interface UserService {
+	public  boolean validateUser(User user);
+
+	public int getId(User attribute) throws SQLException;
+	
+
+}

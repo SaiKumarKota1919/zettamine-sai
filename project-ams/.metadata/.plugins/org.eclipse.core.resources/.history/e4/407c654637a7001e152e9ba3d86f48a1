@@ -1,0 +1,7 @@
+package com.zm.ams.services;
+
+public interface AmcAppraisalLocationService {
+	
+	void save(int amcId,int locId);
+
+}

@@ -1,0 +1,9 @@
+package com.zm.ams.dto;
+
+import com.zm.ams.marker.DaoAccessible;
+
+public class AppraisalManagementCompany implements DaoAccessible {
+	private int amcId;
+	private int amcRegId;
+	
+}

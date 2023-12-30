@@ -1,0 +1,8 @@
+package com.zm.ams.dao.impl;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.User;
+
+public class UserDao implements AmsDao<User>{
+
+}

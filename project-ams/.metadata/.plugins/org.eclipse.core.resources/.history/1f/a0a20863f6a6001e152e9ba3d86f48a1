@@ -1,0 +1,189 @@
+package com.zm.ams.dto;
+
+import java.time.LocalDate;
+
+import com.zm.ams.marker.DaoAccessible;
+
+public class User implements DaoAccessible{
+	private int userId;
+	private String userName;
+	private String password;
+	private boolean enabled;
+	private String firstName;
+	private String lastName;
+	private LocalDate createdOn;
+	private String createdBy;
+	private LocalDate updatedOn;
+	private LocalDate updatedBy;
+	private boolean passwordReset;
+
+	
+	public User() {
+		super();
+		
+	}
+
+	public User(String userName, String password) {
+		super();
+		this.userName = userName;
+		this.password = password;
+	}
+
+	public User(String userName, String password, boolean enabled, String firstName, String lastName,
+			LocalDate createdOn, String createdBy, LocalDate updatedOn, LocalDate updatedBy, boolean passwordReset) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.enabled = enabled;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.createdOn = createdOn;
+		this.createdBy = createdBy;
+		this.updatedOn = updatedOn;
+		this.updatedBy = updatedBy;
+		this.passwordReset = passwordReset;
+	}
+
+
+
+	public int getUserId() {
+		return userId;
+	}
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+
+	public LocalDate getCreatedOn() {
+		return createdOn;
+	}
+
+
+
+	public void setCreatedOn(LocalDate createdOn) {
+		this.createdOn = createdOn;
+	}
+
+
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+
+
+	public LocalDate getUpdatedOn() {
+		return updatedOn;
+	}
+
+
+
+	public void setUpdatedOn(LocalDate updatedOn) {
+		this.updatedOn = updatedOn;
+	}
+
+
+
+	public LocalDate getUpdatedBy() {
+		return updatedBy;
+	}
+
+
+
+	public void setUpdatedBy(LocalDate updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+
+
+	public boolean isPasswordReset() {
+		return passwordReset;
+	}
+
+
+
+	public void setPasswordReset(boolean passwordReset) {
+		this.passwordReset = passwordReset;
+	}
+
+//	@Override
+//	public String toString() {
+//		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", enabled=" + enabled
+//				+ ", firstName=" + firstName + ", lastName=" + lastName + ", createdOn=" + createdOn + ", createdBy="
+//				+ createdBy + ", updatedOn=" + updatedOn + ", updatedBy=" + updatedBy + ", passwordReset="
+//				+ passwordReset + "]";
+//	}
+
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + "]";
+	}
+	
+	
+	
+	
+
+}

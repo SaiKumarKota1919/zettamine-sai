@@ -1,0 +1,40 @@
+package com.zm.ams.services.impl;
+
+import java.sql.SQLException;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dao.impl.AppraisalLocationDao;
+import com.zm.ams.dto.AmcSearchCriteria;
+import com.zm.ams.dto.AppraisalLoc;
+import com.zm.ams.marker.SearchCriteria;
+import com.zm.ams.services.AppraisalLocationService;
+
+public class AppraisalLocationServiceImpl implements AppraisalLocationService{
+
+	private AmsDao<AppraisalLoc, SearchCriteria> amsDao;
+	public AppraisalLocationServiceImpl() {
+		amsDao= new AppraisalLocationDao();
+		
+	}
+	
+	@Override
+	public void save(AppraisalLoc appraisalLoc) throws SQLException {
+		
+		amsDao.save(appraisalLoc);
+		
+		
+	}
+
+	@Override
+	public int getId(AppraisalLoc appraisalLoc) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isExist(AppraisalLoc appraisalLoc) {
+
+		return false;
+	}
+
+}

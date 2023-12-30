@@ -1,0 +1,60 @@
+<%@page import="com.zm.ams.services.impl.AmcServiceImpl"%>
+<%@page import="com.zm.ams.dto.States"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Appraisal Location </title>
+ <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+  <form id="search-amc-form" action="add-location">
+	<a href="home.html" class="home-link">Home</a>
+<a href="login.html" class="logout-link">Logout</a> 
+    <h2>Add Appraisal Location</h2>
+   
+    <label for="select-amc">Select AMC:</label>
+     <select id="AMC" name="amcName" required>
+      <option value="" selected disabled>Select a AMC</option>
+    <% for(String amcName : new AmcServiceImpl().getAmcNames())
+    {
+    %>
+    <option value="<%=amcName%>"><%=amcName%></option>
+    <%
+    }
+    %>
+    </select>
+    <%! 
+    	States[] satesArray = States.values(); %>
+    	<label for="state">State:</label>
+    <select id="state" name="state" required>
+      <option value="" selected disabled>Select a state</option>
+      <% 
+            States[] statesArray = States.values(); // Assuming States is an enum
+            for (States state : statesArray) {
+            	
+        %>
+                <option value="<%=state.getStateName()%>"><%=state.getStateName()%></option>
+        <% }
+            
+       %>
+
+      
+    </select>
+    <label for="city">City:</label>
+	<input type="text" id="city" name="city" placeholder="Enter city" required>
+
+		<c:if test="${amcExist!=null}">
+		<span style=color:red>Duplicate Entry try again!!!</span>
+		</c:if>
+
+    <button type="submit">Add</button>
+    
+<button type="button" class="cancel-button" onclick="window.location.href='home.html'">Cancel</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+package com.zm.ams.dao.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.AppraisalManagementCompany;
+import com.zm.ams.marker.SearchCriteria;
+
+public class AppraisalManagementCompanyJdbcDao implements AmsDao<AppraisalManagementCompany,SearchCriteria> {
+
+	@Override
+	public Optional<AppraisalManagementCompany> get(int id) {
+		//Optional.ofNullable();
+		return Optional.empty();
+	}
+
+	@Override
+	public List<AppraisalManagementCompany> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AppraisalManagementCompany> getBySearchCriteria(SearchCriteria criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(AppraisalManagementCompany t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(AppraisalManagementCompany t, String[] params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(AppraisalManagementCompany t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

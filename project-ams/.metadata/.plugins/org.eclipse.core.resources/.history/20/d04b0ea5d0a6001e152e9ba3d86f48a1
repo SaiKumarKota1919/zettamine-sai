@@ -1,0 +1,8 @@
+package com.zm.ams.services;
+
+import com.zm.ams.dto.User;
+
+public interface UserService {
+	boolean validateUser(User user);
+
+}

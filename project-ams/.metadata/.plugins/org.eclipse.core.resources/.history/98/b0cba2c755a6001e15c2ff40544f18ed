@@ -1,0 +1,9 @@
+package com.zm.ams.dao.impl;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.User;
+import com.zm.ams.marker.SearchCriteria;
+
+public class AppraisalManagementCompanyJdbcDao implements AmsDao<User,SearchCriteria> {
+
+}
