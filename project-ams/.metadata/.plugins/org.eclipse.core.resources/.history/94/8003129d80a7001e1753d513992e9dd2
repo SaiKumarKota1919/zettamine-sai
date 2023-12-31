@@ -1,0 +1,7 @@
+package com.zm.ams.services.impl;
+
+import com.zm.ams.services.SearchService;
+
+public class SearchServiceImpl implements SearchService{
+
+}

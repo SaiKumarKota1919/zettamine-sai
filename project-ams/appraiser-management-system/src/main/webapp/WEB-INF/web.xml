@@ -9,14 +9,5 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>AddAmcController</display-name>
-    <servlet-name>AddAmcController</servlet-name>
-    <servlet-class>com.zm.ams.controller.AddAmcController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddAmcController</servlet-name>
-    <url-pattern>/AddAmcController</url-pattern>
-  </servlet-mapping>
+  
 </web-app>

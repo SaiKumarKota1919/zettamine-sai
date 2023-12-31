@@ -1,0 +1,19 @@
+package com.zm.ams.services.impl;
+
+import java.util.List;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dao.impl.SearchAmcDao;
+import com.zm.ams.dto.Amc;
+import com.zm.ams.marker.SearchCriteria;
+import com.zm.ams.services.SearchService;
+
+public class SearchServiceImpl implements SearchService{
+private AmsDao<Amc, SearchCriteria> amsDao = new SearchAmcDao();
+	@Override
+	public List<Amc> getBySearchCriteria(SearchCriteria searchCriteria) {
+		
+		return null;
+	}
+
+}

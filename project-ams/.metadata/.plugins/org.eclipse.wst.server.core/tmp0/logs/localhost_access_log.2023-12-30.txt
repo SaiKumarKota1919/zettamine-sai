@@ -599,3 +599,16 @@
 0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:41:22 +0530] "GET /appraiser-management-system/home.jsp HTTP/1.1" 200 1114
 0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:42:12 +0530] "GET /appraiser-management-system/add-appraisal-loc.jsp HTTP/1.1" 200 3883
 0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:42:15 +0530] "GET /appraiser-management-system/home.html HTTP/1.1" 404 793
+127.0.0.1 - - [30/Dec/2023:23:49:45 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:49:48 +0530] "GET /appraiser-management-system/ HTTP/1.1" 200 1936
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:49:48 +0530] "GET /favicon.ico HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:49:54 +0530] "POST /appraiser-management-system/login HTTP/1.1" 200 1114
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:49:56 +0530] "GET /appraiser-management-system/add-appraisal-loc.jsp HTTP/1.1" 200 3883
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:50:01 +0530] "GET /appraiser-management-system/add-appraisal-loc.jsp HTTP/1.1" 200 3883
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:50:08 +0530] "GET /appraiser-management-system/add-location?amcName=ZETTAMINE+APPRAISALS&state=Andhra+Pradesh&city=vizag HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:50:08 +0530] "GET /appraiser-management-system/home.jsp HTTP/1.1" 200 1114
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:50:17 +0530] "GET /appraiser-management-system/add-appraisal-loc.jsp HTTP/1.1" 200 3883
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:50:24 +0530] "GET /appraiser-management-system/add-location?amcName=ZETTAMINE+APPRAISALS&state=Andhra+Pradesh&city=vizag HTTP/1.1" 200 3948
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:50:38 +0530] "GET /appraiser-management-system/add-location?amcName=ZETTAMINE+APPRAISALS&state=Andhra+Pradesh&city=Kadapa HTTP/1.1" 200 3948
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:51:49 +0530] "GET /appraiser-management-system/add-location?amcName=ZETTAMINE+APPRAISALS&state=Andhra+Pradesh&city=Kadapa HTTP/1.1" 200 3956
+0:0:0:0:0:0:0:1 - - [30/Dec/2023:23:51:52 +0530] "GET /appraiser-management-system/add-location?amcName=ZETTAMINE+APPRAISALS&state=Andhra+Pradesh&city=Kadapa HTTP/1.1" 200 3956

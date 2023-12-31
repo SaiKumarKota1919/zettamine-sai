@@ -1,0 +1,11 @@
+package com.zm.ams.services;
+
+import java.util.List;
+
+import com.zm.ams.dto.Amc;
+import com.zm.ams.marker.SearchCriteria;
+
+public interface SearchService {
+	List<Amc> getBySearchCriteria(SearchCriteria searchCriteria);
+
+}

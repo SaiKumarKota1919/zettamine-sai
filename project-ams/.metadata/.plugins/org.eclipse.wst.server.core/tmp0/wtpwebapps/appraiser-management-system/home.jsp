@@ -15,10 +15,10 @@
   
   <nav>
 
-    <a href="home.html">Home</a>
+    <a href="#">Home</a>
 	<a href="/appraiser-management-system/add-appraisal-loc.jsp">Add Appraisal location</a>
     <a href="/appraiser-management-system/add-amc.jsp">Add AMC</a>
-    <a href="search.html">Search</a>
+    <a href="/appraiser-management-system/search-form.jsp">Search</a>
     
     <a href="/appraiser-management-system/logout">Logout </a> 
    

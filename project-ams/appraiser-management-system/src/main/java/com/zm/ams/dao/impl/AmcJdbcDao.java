@@ -13,9 +13,10 @@ import java.util.Optional;
 import com.zm.ams.config.JdbcConnectionFactory;
 import com.zm.ams.dao.AmsDao;
 import com.zm.ams.dto.Amc;
+import com.zm.ams.dto.AmcSearchCriteria;
 import com.zm.ams.marker.SearchCriteria;
 
-public class AmcJdbcDao implements AmsDao<Amc,SearchCriteria> {
+public class AmcJdbcDao implements AmsDao<Amc,AmcSearchCriteria> {
 	
 	
 
@@ -33,20 +34,56 @@ public class AmcJdbcDao implements AmsDao<Amc,SearchCriteria> {
 	}
 
 	@Override
-	public List<Amc> getBySearchCriteria(SearchCriteria criteria) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Amc> getBySearchCriteria(AmcSearchCriteria criteria) throws SQLException {
+		Amc amc = new Amc();
+		List<Amc> amcList = new ArrayList<Amc>();
+		StringBuffer sqlQuery = new StringBuffer("selct amc_name,website,state,city,active "
+														+ "from ams.amc where 1=1");
+		ResultSet resultSet = null;
+		Statement statement = connection.createStatement();
+		if(criteria.getState()!=null)
+		{
+			sqlQuery.append("and state='"+criteria.getState()+"'"); 	
+		}
+		if(criteria.getCity()!=null)
+		{
+			sqlQuery.append("and city ='"+criteria.getCity()+"'");
+		}
+		if(criteria.getAmcName()!=null)
+		{
+			amc.setAmcName(criteria.getAmcName());
+			
+			if(getId(amc)!=0)
+			{
+				sqlQuery.append("and amc_name='"+criteria.getAmcName()+"'");
+			}
+			else {
+				sqlQuery.append("and amc_name like %"+criteria.getAmcName()+"%");
+			}
+		}
+		resultSet = statement.executeQuery(sqlQuery.toString());
+		while(resultSet.next())
+		{
+			amcList.add(new Amc(resultSet.getString(1)
+							, resultSet.getString(2)
+							, resultSet.getString(3)
+							,resultSet.getString(4)
+							,resultSet.getString(5)=="Y" ? true:false));
+		}
+		
+		return amcList;
 	}
 
 	@Override
 	public void save(Amc amc) throws SQLException {
+		String sqlQuery = "insert into ams.amc"
+				 + "(amc_reg_id,amc_name,amc_remarks,website"
+				 + ",addr_line1,addr_line2,state,city"
+				 + ",zip_code,created_on,created_by,updated_by"
+				 + ",updated_on,active)"
+				 + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	PreparedStatement preparedStatement = connection
-										.prepareStatement("insert into ams.amc"
-										 + "(amc_reg_id,amc_name,amc_remarks,website"
-										 + ",addr_line1,addr_line2,state,city"
-										 + ",zip_code,created_on,created_by,updated_by"
-										 + ",updated_on,active)"
-										 + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+										.prepareStatement(sqlQuery);
 	
 	preparedStatement.setString(1,amc.getAmcRegId());
 	preparedStatement.setString(2, amc.getAmcName());
@@ -108,9 +145,9 @@ public class AmcJdbcDao implements AmsDao<Amc,SearchCriteria> {
 	}
 
 	@Override
-	public boolean isExist(Amc t) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isExist(Amc t) throws SQLException {
+		
+		return getId(t) !=0 ? true: false;
 	}
 
 }

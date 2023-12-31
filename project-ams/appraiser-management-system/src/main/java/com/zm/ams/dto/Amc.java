@@ -25,6 +25,19 @@ public class Amc implements AmsDto {
 		super();
 		
 	}
+	
+	
+
+	public Amc(String amcName, String website, String state, String city, boolean active) {
+		super();
+		this.amcName = amcName;
+		this.website = website;
+		this.state = state;
+		this.city = city;
+		this.active = active;
+	}
+
+
 
 	public Amc(String amcRegId, String amcName, String amcRemarks, String website,
 			String addressLine1, String addressLine2, String state, String city, String zipCode, LocalDate createdOn,

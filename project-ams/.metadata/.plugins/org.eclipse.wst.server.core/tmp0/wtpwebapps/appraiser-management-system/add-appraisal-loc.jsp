@@ -49,7 +49,7 @@
 	<input type="text" id="city" name="city" placeholder="Enter city" required>
 
 		<c:if test="${amcExist!=null}">
-		<span style=color:red>Duplicate Entry try again!!!</span>
+		<span style=color:red>Duplicate Entry try again!!!</span><br><br>
 		</c:if>
 
     <button type="submit">Add</button>

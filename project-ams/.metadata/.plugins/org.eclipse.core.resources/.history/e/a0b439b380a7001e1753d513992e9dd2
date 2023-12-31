@@ -1,0 +1,62 @@
+package com.zm.ams.dao.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.Amc;
+import com.zm.ams.marker.SearchCriteria;
+
+public class SearchAmcDao implements AmsDao<Amc, SearchCriteria>{
+
+
+
+@Override
+public Optional<Amc> get(int id) throws SQLException {
+	// TODO Auto-generated method stub
+	return Optional.empty();
+}
+
+@Override
+public List<Amc> getAll() throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public List<Amc> getBySearchCriteria(SearchCriteria criteria) throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public int getId(Amc t) throws SQLException {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public boolean isExist(Amc t) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+@Override
+public void save(Amc t) throws SQLException {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void update(Amc t, String... params) throws SQLException {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void delete(Amc t) throws SQLException {
+	// TODO Auto-generated method stub
+	
+}
+}
