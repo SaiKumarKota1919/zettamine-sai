@@ -80,8 +80,8 @@
         <input type="password" id="password" name="password" required placeholder="Enter password">
       </div>
        <c:if test="${error!= null}">
-      <span style=color:red>Invalid credentials try again!!!</span>
-      </c:if><br><br>
+      <span style=color:red>Invalid credentials try again!!!</span><br><br>
+      </c:if>
       <button type="submit">Login</button>
      
     </form>

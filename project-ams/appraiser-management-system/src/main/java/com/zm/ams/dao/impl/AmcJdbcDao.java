@@ -14,16 +14,16 @@ import com.zm.ams.config.JdbcConnectionFactory;
 import com.zm.ams.dao.AmsDao;
 import com.zm.ams.dto.Amc;
 import com.zm.ams.dto.AmcSearchCriteria;
+import com.zm.ams.dto.AppraisalLoc;
 import com.zm.ams.marker.SearchCriteria;
 
-public class AmcJdbcDao implements AmsDao<Amc,AmcSearchCriteria> {
-	
-	
+public class AmcJdbcDao implements AmsDao<Amc, AmcSearchCriteria> {
 
 	private Connection connection = JdbcConnectionFactory.getJdbcConnection();
+
 	@Override
 	public Optional<Amc> get(int id) {
-		//Optional.ofNullable();
+		// Optional.ofNullable();
 		return Optional.empty();
 	}
 
@@ -37,95 +37,97 @@ public class AmcJdbcDao implements AmsDao<Amc,AmcSearchCriteria> {
 	public List<Amc> getBySearchCriteria(AmcSearchCriteria criteria) throws SQLException {
 		Amc amc = new Amc();
 		List<Amc> amcList = new ArrayList<Amc>();
-		StringBuffer sqlQuery = new StringBuffer("selct amc_name,website,state,city,active "
-														+ "from ams.amc where 1=1");
+
+		StringBuffer sqlQuery = new StringBuffer(
+				"select amc_name,website,state,city,active,amc_id " + "from ams.amc where 1=1");
 		ResultSet resultSet = null;
 		Statement statement = connection.createStatement();
-		if(criteria.getState()!=null)
-		{
-			sqlQuery.append("and state='"+criteria.getState()+"'"); 	
+		if (criteria.getState() != null && criteria.getCity() != null) {
+			int locId = new AppraisalLocationDao().getId(new AppraisalLoc(criteria.getState(), criteria.getCity()));
+
+			sqlQuery.append(" and amc_id in(select amc_id from ams.amc_appraisal_loc where loc_id "
+									+ "in(select loc_id from ams.appraisal_loc where state='"+criteria.getState()+"'"
+											+ "and city='"+criteria.getCity()+"')"
+									+ ") ");
 		}
-		if(criteria.getCity()!=null)
-		{
-			sqlQuery.append("and city ='"+criteria.getCity()+"'");
-		}
-		if(criteria.getAmcName()!=null)
-		{
-			amc.setAmcName(criteria.getAmcName());
+
+		else if (criteria.getState() != null) {
+	
+
+			sqlQuery.append(" and amc_id in(select amc_id from ams.amc_appraisal_loc"
+								+" where loc_id in(select loc_id from ams.appraisal_loc "
+								+ "where state= '"+criteria.getState()+"')) ");
+		} else if (criteria.getCity() != null) {
 			
-			if(getId(amc)!=0)
-			{
-				sqlQuery.append("and amc_name='"+criteria.getAmcName()+"'");
-			}
-			else {
-				sqlQuery.append("and amc_name like %"+criteria.getAmcName()+"%");
+			sqlQuery.append(" and amc_id in(select amc_id from ams.amc_appraisal_loc"
+					+" where loc_id in(select loc_id from ams.appraisal_loc "
+					+ "where city='"+criteria.getCity().toUpperCase()+"')) ");
+
+		}
+		if (criteria.getAmcName() != null) {
+			amc.setAmcName(criteria.getAmcName().toUpperCase());
+
+			if (getId(amc) != 0) {
+				sqlQuery.append(" and amc_name='" + amc.getAmcName() + "'");
+			} else {
+				sqlQuery.append(" and amc_name like '%" +amc.getAmcName() + "%'");
 			}
 		}
+		System.out.println(sqlQuery);
 		resultSet = statement.executeQuery(sqlQuery.toString());
-		while(resultSet.next())
-		{
-			amcList.add(new Amc(resultSet.getString(1)
-							, resultSet.getString(2)
-							, resultSet.getString(3)
-							,resultSet.getString(4)
-							,resultSet.getString(5)=="Y" ? true:false));
+		while (resultSet.next()) {
+			amcList.add(new Amc(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+					resultSet.getString(4), resultSet.getString(5).equals("Y") ? true : false, resultSet.getInt(6)));
 		}
-		
+
 		return amcList;
 	}
 
 	@Override
 	public void save(Amc amc) throws SQLException {
-		String sqlQuery = "insert into ams.amc"
-				 + "(amc_reg_id,amc_name,amc_remarks,website"
-				 + ",addr_line1,addr_line2,state,city"
-				 + ",zip_code,created_on,created_by,updated_by"
-				 + ",updated_on,active)"
-				 + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	PreparedStatement preparedStatement = connection
-										.prepareStatement(sqlQuery);
-	
-	preparedStatement.setString(1,amc.getAmcRegId());
-	preparedStatement.setString(2, amc.getAmcName());
-	preparedStatement.setString(3, amc.getAmcRemarks());
-	preparedStatement.setString(4, amc.getWebsite());
-	preparedStatement.setString(5, amc.getAddressLine1());
-	preparedStatement.setString(6, amc.getAddressLine2());
-	preparedStatement.setString(7, amc.getState());
-	preparedStatement.setString(8, amc.getCity());
-	preparedStatement.setString(9, amc.getZipCode());
-	preparedStatement.setDate(10, Date.valueOf(amc.getCreatedOn()) );
-	preparedStatement.setInt(11, amc.getCreatedBy());
-	preparedStatement.setInt(12,amc.getUpdatedBy());
-	preparedStatement.setDate(13, Date.valueOf(amc.getUpdatedOn()));
-	preparedStatement.setString(14, amc.isActive()?"Y":"N");
-	
-	preparedStatement.executeUpdate();
-	
-	
-		
+		String sqlQuery = "insert into ams.amc" + "(amc_reg_id,amc_name,amc_remarks,website"
+				+ ",addr_line1,addr_line2,state,city" + ",zip_code,created_on,created_by,updated_by"
+				+ ",updated_on,active)" + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+
+		preparedStatement.setString(1, amc.getAmcRegId());
+		preparedStatement.setString(2, amc.getAmcName());
+		preparedStatement.setString(3, amc.getAmcRemarks());
+		preparedStatement.setString(4, amc.getWebsite());
+		preparedStatement.setString(5, amc.getAddressLine1());
+		preparedStatement.setString(6, amc.getAddressLine2());
+		preparedStatement.setString(7, amc.getState());
+		preparedStatement.setString(8, amc.getCity());
+		preparedStatement.setString(9, amc.getZipCode());
+		preparedStatement.setDate(10, Date.valueOf(amc.getCreatedOn()));
+		preparedStatement.setInt(11, amc.getCreatedBy());
+		preparedStatement.setInt(12, amc.getUpdatedBy());
+		preparedStatement.setDate(13, Date.valueOf(amc.getUpdatedOn()));
+		preparedStatement.setString(14, amc.isActive() ? "Y" : "N");
+
+		preparedStatement.executeUpdate();
+
 	}
 
 	@Override
 	public void update(Amc t, String[] params) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(Amc t) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public int getId(Amc t) throws SQLException {
 		String sqlQuery = "select amc_id from ams.amc where amc_name=?";
 		PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-		preparedStatement.setString(1,t.getAmcName());
+		preparedStatement.setString(1, t.getAmcName());
 		ResultSet resultSet = preparedStatement.executeQuery();
-		if(resultSet.next())
-		{
+		if (resultSet.next()) {
 			return resultSet.getInt(1);
 		}
 		return 0;
@@ -135,10 +137,9 @@ public class AmcJdbcDao implements AmsDao<Amc,AmcSearchCriteria> {
 		List<String> list = new ArrayList<String>();
 		String sqlQuery = "select amc_name from ams.amc";
 		Statement statement = connection.createStatement();
-		
-		ResultSet resultSet= statement.executeQuery(sqlQuery);
-		while(resultSet.next())
-		{
+
+		ResultSet resultSet = statement.executeQuery(sqlQuery);
+		while (resultSet.next()) {
 			list.add(resultSet.getString(1));
 		}
 		return list;
@@ -146,8 +147,8 @@ public class AmcJdbcDao implements AmsDao<Amc,AmcSearchCriteria> {
 
 	@Override
 	public boolean isExist(Amc t) throws SQLException {
-		
-		return getId(t) !=0 ? true: false;
+
+		return getId(t) != 0 ? true : false;
 	}
 
 }

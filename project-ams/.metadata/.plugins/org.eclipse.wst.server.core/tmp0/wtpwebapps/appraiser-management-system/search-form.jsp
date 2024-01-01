@@ -14,46 +14,50 @@
 <body>
   <form id="search-amc-form" action="search">
 	<a href="home.html" class="home-link">Home</a>
-<a href="login.html" class="logout-link">Logout</a> 
+<a href="login.html" class="logout-link">Logout</a>
     <h2>Search AMC</h2>
 
     <label for="company-name">Company Name:</label>
-    <input type="text" id="company-name" name="companyName" placeholder="Enter Company Name">
+    <input type="text" name="companyName" placeholder="Enter a keyword or company name">
 
     <label for="state">State:</label>
-    <select id="state" name="state" required>
+    <select id="state" name="state" >
       <option value="" selected disabled>Select a state</option>
       <% 
             States[] statesArray = States.values(); // Assuming States is an enum
             for (States state : statesArray) {
             	
         %>
-                <option value="<%=state.getStateName()%>"><%=state.getStateName()%></option>
+                <option value="<%=state.name()%>"><%=state.getStateName()%></option>
         <% }
             
        %>
 
-      
-    </select>
-    <label for="city">City:</label>
-    <select id="city" name="city">
-      <option value="" selected disabled>Select a city</option>
-      
-    </select>
 
-    <label for="property">Property:</label>
+  
+      
+    </select>
+    	<label for="city">City:</label>
+    <input type="text" name="city" placeholder="Enter city">
+<!--     <label for="city">City:</label> -->
+<!--     <select id="city" name="city"> -->
+<!--       <option value="" selected disabled>Select a city</option> -->
+      
+<!--     </select> -->
+
+   <!--   <label for="property">Property:</label>
     <select id="property" name="property">
       <option value="" selected disabled>Select a property</option>
       <option value="residential">Residential</option>
       <option value="commercial">Commercial</option>
       
-    </select>
+    </select>-->
     <c:if test="${error!=null}">
-    <span style=color:red>${requestScope.error}</span>
+    <span style=color:red>Error</span>
     </c:if>
 
     <button type="submit">Search</button>
-<button type="button" class="cancel-button" onclick="window.location.href='home.html'">Cancel</button>
+<button type="button" class="cancel-button" onclick="window.location.href='home.jsp'">Cancel</button>
   </form>
 </body>
 </html>

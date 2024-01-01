@@ -42,6 +42,9 @@ public class AmcServiceImpl implements AmcService {
 	@Override
 	public List<Amc> getBySearchCriteria(AmcSearchCriteria searchCriteria) throws SQLException {
 		
+		searchCriteria.setCity(searchCriteria.getCity().toUpperCase());
+		searchCriteria.setAmcName(searchCriteria.getAmcName().toUpperCase());
+		
 		return amsDao.getBySearchCriteria(searchCriteria);
 	}
 

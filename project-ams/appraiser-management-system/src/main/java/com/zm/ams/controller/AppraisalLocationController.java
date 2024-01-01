@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.postgresql.util.PSQLException;
+
 import com.zm.ams.dao.AmsDao;
 import com.zm.ams.dao.impl.AppraisalLocationDao;
 import com.zm.ams.dto.Amc;
@@ -68,8 +70,8 @@ public class AppraisalLocationController extends HttpServlet {
 					response.sendRedirect("home.jsp");
 				}
 				else {
-					HttpSession session = request.getSession();
-					session.setAttribute("amcExist","true");
+				//	HttpSession session = request.getSession();
+					//session.setAttribute("amcExist","true");
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("add-appraisal-loc.jsp");
 					requestDispatcher.forward(request, response);
 					
@@ -77,7 +79,16 @@ public class AppraisalLocationController extends HttpServlet {
 				}
 				
 				
-			} catch (SQLException e) {
+			} 
+			
+			catch (PSQLException duplicateException) {
+				
+				duplicateException.printStackTrace();
+				request.setAttribute("amcExist","true");
+				 request.getRequestDispatcher("add-appraisal-loc.jsp").forward(request, response);
+				
+			}
+			catch (SQLException e) {
 				
 				
 				

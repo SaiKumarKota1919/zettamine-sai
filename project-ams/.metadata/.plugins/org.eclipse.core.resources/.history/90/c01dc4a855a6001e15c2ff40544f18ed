@@ -1,7 +1,0 @@
-package com.zm.ams.dao.impl;
-
-import com.zm.ams.dao.AmsDao;
-
-public class AppraisalManagementCompanyJdbcDao implements AmsDao {
-
-}

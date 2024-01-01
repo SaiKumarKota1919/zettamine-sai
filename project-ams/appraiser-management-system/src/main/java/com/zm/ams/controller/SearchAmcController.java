@@ -37,11 +37,13 @@ public class SearchAmcController extends HttpServlet {
 			List<Amc> amcList  = amcService.getBySearchCriteria(amcSearchCriteria);
 			HttpSession session = request.getSession();
 			session.setAttribute("amcList", amcList);
+			System.out.println(amcList);
 			response.sendRedirect("list-amc.jsp");
 			
 		} catch (SQLException e) {
 			
-			request.setAttribute("error",e.getMessage());
+			e.printStackTrace();
+			request.setAttribute("error","invalid");
 			response.sendRedirect("search-form.jsp");
 		}
 		

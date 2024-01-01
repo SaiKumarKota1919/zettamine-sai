@@ -6,6 +6,7 @@ import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-//@WebFilter("/*")
+@WebFilter("/*")
 public class AuthenticationFilterServlet extends HttpFilter implements Filter {
        
   
@@ -35,11 +36,17 @@ public class AuthenticationFilterServlet extends HttpFilter implements Filter {
 		String loginPage = "login-page.jsp";
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse)response;
-		
-		HttpSession session = req.getSession();
-		if(!req.getRequestURI().endsWith(loginPage)&&session.getAttribute("userName")==null)
+		HttpSession session = req.getSession(true);
+		if(!(req.getRequestURI().endsWith(loginPage)||req.getRequestURI().endsWith("login")))
 		{
-			resp.sendRedirect("login-page.jsp");
+			if(session.getAttribute("userName")==null)
+			{
+				resp.sendRedirect("login-page.jsp");
+			}
+			
+			else {
+				chain.doFilter(request, response);
+			}
 			
 		}
 		else {
@@ -47,11 +54,10 @@ public class AuthenticationFilterServlet extends HttpFilter implements Filter {
 		}
 		
 		
+		
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
+	
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
 	}

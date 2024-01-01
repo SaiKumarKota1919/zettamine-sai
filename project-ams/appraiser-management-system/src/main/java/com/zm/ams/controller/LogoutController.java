@@ -21,11 +21,14 @@ public class LogoutController extends HttpServlet {
     }
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		session.removeAttribute("userName");
-		reponse.sendRedirect("login-page.jsp");
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		response.setHeader("Pragma", "no-cache"); 
+		response.setDateHeader("Expires", 0); 
+		response.sendRedirect("login-page.jsp");
 		
 	}
     

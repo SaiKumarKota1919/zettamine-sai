@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +41,7 @@
       <%for(States state: States.values())
     	 {
     	  %>
-    	  <option value="<%=state.getStateName()%>"><%=state.getStateName()%></option>
+    	  <option value="<%= state.name()%>"><%=state.getStateName()%></option>
       <% }
       %>
      
@@ -58,6 +59,9 @@
 	Yes
 	<input type="radio" id="active" name="active" value="flase" required>
 	No<br><br>
+	<c:if test="${errorMessage!=null}">
+	<span style=color:red>Already exists try with another!!!</span><br><br>
+	</c:if>
     <button type="submit">Add AMC</button>
  <button type="button" class="cancel-button" onclick="window.location.href='home.jsp'">Cancel</button>
 

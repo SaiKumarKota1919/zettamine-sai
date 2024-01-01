@@ -1,5 +1,0 @@
-package com.zm.ams.dao.impl;
-
-public class AppraisalManagementCompanyJdbcDao implements<> {
-
-}

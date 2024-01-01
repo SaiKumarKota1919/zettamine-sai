@@ -28,13 +28,14 @@ public class Amc implements AmsDto {
 	
 	
 
-	public Amc(String amcName, String website, String state, String city, boolean active) {
+	public Amc(String amcName, String website, String state, String city, boolean active,int amcId) {
 		super();
 		this.amcName = amcName;
 		this.website = website;
 		this.state = state;
 		this.city = city;
 		this.active = active;
+		this.amcId = amcId;
 	}
 
 

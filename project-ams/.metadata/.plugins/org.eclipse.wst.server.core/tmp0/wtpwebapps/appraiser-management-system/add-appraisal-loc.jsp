@@ -38,7 +38,7 @@
             for (States state : statesArray) {
             	
         %>
-                <option value="<%=state.getStateName()%>"><%=state.getStateName()%></option>
+                <option value="<%=state.name()%>"><%=state.getStateName()%></option>
         <% }
             
        %>
@@ -48,9 +48,10 @@
     <label for="city">City:</label>
 	<input type="text" id="city" name="city" placeholder="Enter city" required>
 
-		<c:if test="${amcExist!=null}">
+		<c:if test="${amcExist==true}">
 		<span style=color:red>Duplicate Entry try again!!!</span><br><br>
 		</c:if>
+		
 
     <button type="submit">Add</button>
     

@@ -19,6 +19,7 @@ public class AppraisalLocationServiceImpl implements AppraisalLocationService{
 	
 	@Override
 	public void save(AppraisalLoc appraisalLoc) throws SQLException {
+		appraisalLoc.setCity(appraisalLoc.getCity().toUpperCase());
 		
 		amsDao.save(appraisalLoc);
 		
