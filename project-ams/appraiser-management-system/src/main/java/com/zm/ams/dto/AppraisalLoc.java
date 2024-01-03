@@ -12,6 +12,17 @@ public class AppraisalLoc implements AmsDto{
 		
 	}
 	
+	
+	
+	public AppraisalLoc(int locId, String state, String city) {
+		super();
+		this.locId = locId;
+		this.state = state;
+		this.city = city;
+	}
+
+
+
 	public AppraisalLoc(String state, String city) {
 		super();
 		this.state = state;

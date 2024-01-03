@@ -1,5 +1,7 @@
 package com.zm.ams.dto;
 
+import java.util.List;
+
 import com.zm.ams.marker.AmsDto;
 
 public class AmcAppraisalLoc implements AmsDto{
@@ -30,6 +32,7 @@ public class AmcAppraisalLoc implements AmsDto{
 	public String toString() {
 		return "AmcAppraisalLoc [amcId=" + amcId + ", locId=" + locId + "]";
 	}
+
 	
 	
 

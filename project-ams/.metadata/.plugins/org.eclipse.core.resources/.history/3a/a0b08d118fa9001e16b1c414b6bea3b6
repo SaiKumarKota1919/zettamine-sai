@@ -1,0 +1,64 @@
+package com.zm.ams.dao.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.Project;
+import com.zm.ams.marker.AmsDto;
+import com.zm.ams.marker.SearchCriteria;
+
+public class ProjectDao implements AmsDao<AmsDto, SearchCriteria> 
+{
+
+	@Override
+	public Optional<AmsDto> get(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public List<AmsDto> getAll() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AmsDto> getBySearchCriteria(SearchCriteria criteria) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getId(AmsDto t) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isExist(AmsDto t) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void save(AmsDto t) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(AmsDto t, String... params) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(AmsDto t) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

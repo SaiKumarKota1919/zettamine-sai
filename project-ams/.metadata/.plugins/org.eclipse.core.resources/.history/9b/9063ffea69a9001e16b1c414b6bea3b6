@@ -1,0 +1,7 @@
+package com.zm.ams.services.impl;
+
+import com.zm.ams.services.LocationService;
+
+public class LocationServiceImpl implements LocationService{
+
+}

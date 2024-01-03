@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 
 public class JdbcConnectionFactory {
 	private static Connection connection =null;
+	
+	
 	public static Connection getJdbcConnection() {
 		
 		if(connection==null)

@@ -49,15 +49,15 @@ public class AddAmcController extends HttpServlet {
 
 			e.printStackTrace();
 		}
-			Amc amc = new Amc(request.getParameter("registerId")
-								,request.getParameter("name")
-								,request.getParameter("remarks")
-								,request.getParameter("website")
-								,request.getParameter("addressLine1")
-								,request.getParameter("addressLine2")
-								,request.getParameter("state")
-								,request.getParameter("city")
-								,request.getParameter("zipCode")
+			Amc amc = new Amc(request.getParameter("registerId").trim()
+								,request.getParameter("name").trim()
+								,request.getParameter("remarks").trim()
+								,request.getParameter("website").trim()
+								,request.getParameter("addressLine1").trim()
+								,request.getParameter("addressLine2").trim()
+								,request.getParameter("state").trim()
+								,request.getParameter("city").trim()
+								,request.getParameter("zipCode").trim()
 								,LocalDate.now()
 								,userId
 								,LocalDate.now()

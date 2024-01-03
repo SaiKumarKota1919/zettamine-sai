@@ -1,0 +1,71 @@
+package com.zm.ams.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import com.zm.ams.dto.AppraisalLoc;
+import com.zm.ams.dto.Project;
+import com.zm.ams.services.impl.AppraisalLocationServiceImpl;
+
+@WebServlet("/project")
+public class ProjectController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+       
+    public ProjectController() {
+        super();
+       
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getParameter("action").equals("add"))
+		{
+			int amcId = Integer.parseInt(request.getParameter("amcId"));
+			int propertyTypeId = Integer.parseInt(request.getParameter("projectType"));
+			String projectClient = request.getParameter("projectClient");
+			String projectRemarks = request.getParameter("projectRemarks");
+			String clientRemarks =  request.getParameter("clientRemarks");
+			LocalDate startDate =  LocalDate.parse(request.getParameter("startDate")
+													,DateTimeFormatter.ofPattern("dd-MM-Y") );
+			LocalDate endDate =  LocalDate.parse(request.getParameter("startDate")
+													,DateTimeFormatter.ofPattern("dd-MM-Y") );
+			String state = request.getParameter("state");
+			String city = request.getParameter("city");
+			Double estimatedVal = Double.parseDouble(request.getParameter("estimatedValue"));
+			
+			try {
+				int locationId = new AppraisalLocationServiceImpl().getId(new AppraisalLoc(state, city));
+				Project project = new Project(amcId, propertyTypeId, projectClient
+											, projectRemarks, clientRemarks, startDate
+												, endDate, estimatedVal, locationId);
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+		
+			
+					
+			
+		}
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

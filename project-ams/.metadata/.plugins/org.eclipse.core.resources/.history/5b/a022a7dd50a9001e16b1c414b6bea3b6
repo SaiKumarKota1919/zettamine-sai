@@ -1,0 +1,29 @@
+package com.zm.ams.services.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dao.impl.PropertyTypeDao;
+import com.zm.ams.dto.PropertyType;
+import com.zm.ams.marker.SearchCriteria;
+import com.zm.ams.services.PropertyTypeService;
+
+public class PropertyTypeServiceImpl implements PropertyTypeService {
+
+	private AmsDao<PropertyType, SearchCriteria> propertyTypeDao;
+	
+	public PropertyTypeServiceImpl()
+	{
+		propertyTypeDao =  new PropertyTypeDao();
+	}
+	
+	
+	@Override
+	public List<PropertyType> getAllPropertyType() {
+		
+		return propertyTypeDao.getAll();
+	}
+	
+
+}

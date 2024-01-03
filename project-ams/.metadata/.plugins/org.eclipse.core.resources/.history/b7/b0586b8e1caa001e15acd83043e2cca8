@@ -1,0 +1,96 @@
+package com.zm.ams.dao.impl;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.config.JdbcConnectionFactory;
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.Project;
+import com.zm.ams.marker.AmsDto;
+import com.zm.ams.marker.SearchCriteria;
+
+public class ProjectDao implements AmsDao<Project, SearchCriteria> 
+{
+	private Connection connection;
+	
+	public ProjectDao() {
+		connection = JdbcConnectionFactory.getJdbcConnection();
+	}
+
+	@Override
+	public Optional<Project> get(int id) throws SQLException {
+		
+		return Optional.empty();
+	}
+
+	@Override
+	public List<Project> getAll() throws SQLException {
+		List<Project> list = new ArrayList<Project>();
+		String sqlQuery = "select proj_client,prop_type_id,"
+								+ " from ams.amc_project";
+		ResultSet resultSet = connection.createStatement().executeQuery(sqlQuery);
+		while(resultSet.next())
+		{
+			list.add(new Pr)
+		}
+		return null;
+	}
+
+	@Override
+	public List<Project> getBySearchCriteria(SearchCriteria criteria) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getId(Project t) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isExist(Project t) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void save(Project t) throws SQLException {
+		String sqlQuery = "insert into ams.amc_project"
+						+ "(amc_id,prop_type_id,proj_client,proj_remarks,client_remarks,"
+						+ "proj_start_dt,proj_end_dt,estimate_value,loc_id) "
+						+ "values(?,?,?,?,?,?,?,?,?)";
+		PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+		preparedStatement.setInt(1, t.getAmcId());
+		preparedStatement.setInt(2, t.getPropertyTypeId());
+		preparedStatement.setString(3, t.getProjectClient());
+		preparedStatement.setString(4,t.getProjectRemark());
+		preparedStatement.setString(5,t.getClientRemarks());
+		preparedStatement.setDate(6, Date.valueOf(t.getProjectStartDate()));
+		preparedStatement.setDate(7, Date.valueOf(t.getProjectEndDate()));
+		preparedStatement.setDouble(8, t.getEstimateValue());
+		preparedStatement.setInt(9, t.getLocationId());
+		preparedStatement.executeUpdate();
+		
+	}
+
+	@Override
+	public void update(Project t, String... params) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Project t) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

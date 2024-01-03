@@ -1,0 +1,7 @@
+package com.zm.ams.dao.impl;
+
+import com.zm.ams.dao.AmsDao;
+
+public class PropertyTypeDao implements AmsDao<PropertyType, SearchCriteria> {
+
+}

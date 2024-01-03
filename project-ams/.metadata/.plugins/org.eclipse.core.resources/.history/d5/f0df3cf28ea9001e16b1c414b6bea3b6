@@ -1,0 +1,11 @@
+package com.zm.ams.dao.impl;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.Project;
+import com.zm.ams.marker.SearchCriteria;
+
+public class ProjectDao implements AmsDao<Project, SearchCriteria> 
+{
+	
+
+}

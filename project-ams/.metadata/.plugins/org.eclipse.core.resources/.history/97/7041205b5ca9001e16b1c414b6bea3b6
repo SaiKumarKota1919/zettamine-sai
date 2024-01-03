@@ -1,0 +1,51 @@
+package com.zm.ams.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+@WebServlet("/project")
+public class ProjectController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public ProjectController() {
+        super();
+       
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getParameter("action").equals("add"))
+		{
+			int amcId = Integer.parseInt(request.getParameter("amcId"));
+			int projectType = Integer.parseInt(request.getParameter("projectType"));
+			String projectClient = request.getParameter("projectClient");
+			String projectRemarks = request.getParameter("projectRemarks");
+			String clientRemarks =  request.getParameter("clientRemarks");
+			LocalDate startDate =  LocalDate.parse(request.getParameter("startDate")
+													,DateTimeFormatter.ofPattern("dd-MM-Y") );
+			LocalDate endDate =  LocalDate.parse(request.getParameter("startDate")
+													,DateTimeFormatter.ofPattern("dd-MM-Y") );
+			String state = request.getParameter("state");
+			String city = request.getParameter("city");
+			Double estimatedVal = Double.parseDouble(request.getParameter("estimatedValue"));
+			
+		
+			
+					
+			
+		}
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

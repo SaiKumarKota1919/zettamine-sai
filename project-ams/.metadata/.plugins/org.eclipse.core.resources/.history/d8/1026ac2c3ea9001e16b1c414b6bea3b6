@@ -1,0 +1,7 @@
+/**
+ * 
+ */
+function sortResults(sortOption)
+{
+	alert(sortOption)
+}

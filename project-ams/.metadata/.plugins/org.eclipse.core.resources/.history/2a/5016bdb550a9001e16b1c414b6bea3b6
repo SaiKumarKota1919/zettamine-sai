@@ -1,0 +1,10 @@
+package com.zm.ams.services;
+
+import java.util.Map;
+
+public interface PropertyTypeService {
+	
+	Map<Integer,String> getAllPropertyType();
+	
+
+}

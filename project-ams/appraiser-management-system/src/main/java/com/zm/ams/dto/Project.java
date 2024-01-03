@@ -2,7 +2,9 @@ package com.zm.ams.dto;
 
 import java.time.LocalDate;
 
-public class Project {
+import com.zm.ams.marker.AmsDto;
+
+public class Project implements AmsDto{
 private int pojectId;
 private int amcId;
 private int propertyTypeId;
@@ -12,7 +14,7 @@ private String clientRemarks;
 private LocalDate projectStartDate;
 private LocalDate projectEndDate;
 private double estimateValue;
-private int LocationId;
+private int locationId;
 public Project(int amcId, int propertyTypeId, String projectClient, String projectRemark, String clientRemarks,
 		LocalDate projectStartDate, LocalDate projectEndDate, double estimateValue, int locationId) {
 	super();
@@ -24,8 +26,23 @@ public Project(int amcId, int propertyTypeId, String projectClient, String proje
 	this.projectStartDate = projectStartDate;
 	this.projectEndDate = projectEndDate;
 	this.estimateValue = estimateValue;
-	LocationId = locationId;
+	this.locationId = locationId;
 }
+
+
+public Project(int propertyTypeId, String projectClient, LocalDate projectStartDate, LocalDate projectEndDate,
+		double estimateValue, int locationId,int amcId) {
+	super();
+	this.propertyTypeId = propertyTypeId;
+	this.projectClient = projectClient;
+	this.projectStartDate = projectStartDate;
+	this.projectEndDate = projectEndDate;
+	this.estimateValue = estimateValue;
+	this.locationId = locationId;
+	this.amcId = amcId;
+}
+
+
 public int getPojectId() {
 	return pojectId;
 }
@@ -78,17 +95,17 @@ public void setEstimateValue(double estimateValue) {
 	this.estimateValue = estimateValue;
 }
 public int getLocationId() {
-	return LocationId;
+	return locationId;
 }
 public void setLocationId(int locationId) {
-	LocationId = locationId;
+	locationId = locationId;
 }
 @Override
 public String toString() {
 	return "Project [pojectId=" + pojectId + ", amcId=" + amcId + ", propertyTypeId=" + propertyTypeId
 			+ ", projectClient=" + projectClient + ", projectRemark=" + projectRemark + ", clientRemarks="
 			+ clientRemarks + ", projectStartDate=" + projectStartDate + ", projectEndDate=" + projectEndDate
-			+ ", estimateValue=" + estimateValue + ", LocationId=" + LocationId + "]";
+			+ ", estimateValue=" + estimateValue + ", LocationId=" + locationId + "]";
 }
 
 

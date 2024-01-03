@@ -1,10 +1,12 @@
 package com.zm.ams.services.impl;
 
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 import com.zm.ams.dao.AmsDao;
 import com.zm.ams.dao.impl.AmcAppraisalLocDao;
 import com.zm.ams.dto.AmcAppraisalLoc;
+import com.zm.ams.dto.AppraisalLoc;
 import com.zm.ams.marker.SearchCriteria;
 import com.zm.ams.services.AmcAppraisalLocationService;
 
@@ -23,6 +25,12 @@ public class AmcAppraisalLocServiceImpl implements AmcAppraisalLocationService{
 	public boolean isExist(AmcAppraisalLoc amcAppraisalLoc) throws SQLException {
 		
 		return amsDao.isExist(amcAppraisalLoc);
+	}
+
+	@Override
+	public List<AppraisalLoc> getLocIdByAmcId(int amcId) throws SQLException {
+		
+		return new AmcAppraisalLocDao().getLocByAmcId(amcId);
 	}
 
 }

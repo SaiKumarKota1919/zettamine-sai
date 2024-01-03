@@ -1,0 +1,85 @@
+package com.zm.ams.dao.impl;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.config.JdbcConnectionFactory;
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.PropertyType;
+import com.zm.ams.marker.SearchCriteria;
+
+public class PropertyTypeDao implements AmsDao<PropertyType, SearchCriteria> {
+private Connection connection = JdbcConnectionFactory.getJdbcConnection();
+	
+	@Override
+	public Optional<PropertyType> get(int id) throws SQLException {
+		Optional<PropertyType> optional = Optional.empty();
+		String sqlQuery = "select type_id,type_desc from ams.property_type where type_id="+id;
+		Statement statement = connection.createStatement();
+		ResultSet resultSet = statement.executeQuery(sqlQuery);
+		if(resultSet.next())
+		{
+			optional.of(new PropertyType(resultSet.getInt(1),resultSet.getString(2)));
+			
+		}
+		return Optional;
+	}
+
+	@Override
+	public List<PropertyType> getAll() throws SQLException {
+		List<PropertyType> propertyTypeList = new ArrayList<PropertyType>();
+		String sqlQuery = "select * from ams.property_type";
+		Statement statement = connection.createStatement();
+		ResultSet resultSet = statement.executeQuery(sqlQuery);
+		while(resultSet.next())
+		{
+			propertyTypeList.add(new PropertyType(resultSet.getInt(1),resultSet.getString(2)));
+			
+		}
+
+		
+		return propertyTypeList;
+	}
+
+	@Override
+	public List<PropertyType> getBySearchCriteria(SearchCriteria criteria) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getId(PropertyType t) throws SQLException {
+		
+		return 0;
+	}
+
+	@Override
+	public boolean isExist(PropertyType t) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void save(PropertyType t) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(PropertyType t, String... params) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(PropertyType t) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

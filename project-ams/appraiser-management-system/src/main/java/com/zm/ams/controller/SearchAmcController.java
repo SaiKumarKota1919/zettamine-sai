@@ -33,6 +33,8 @@ public class SearchAmcController extends HttpServlet {
 												,request.getParameter("state"),request.getParameter("city"));
 		
 		try {
+			System.out.println(request.getParameter("city"));
+			System.out.println(request.getParameter("city").length());
 			
 			List<Amc> amcList  = amcService.getBySearchCriteria(amcSearchCriteria);
 			HttpSession session = request.getSession();

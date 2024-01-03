@@ -1,0 +1,11 @@
+package com.zm.ams.services;
+
+import java.util.List;
+
+import com.zm.ams.dto.Project;
+
+public interface ProjectService {
+	void addProject(Project project);
+	List<Project> getAllProjectsByAmc(int amcId);
+
+}

@@ -1,0 +1,76 @@
+package com.zm.ams.dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.config.JdbcConnectionFactory;
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.Project;
+import com.zm.ams.marker.AmsDto;
+import com.zm.ams.marker.SearchCriteria;
+
+public class ProjectDao implements AmsDao<Project, SearchCriteria> 
+{
+	private Connection connection;
+	
+	public ProjectDao() {
+		connection = JdbcConnectionFactory.getJdbcConnection();
+	}
+
+	@Override
+	public Optional<Project> get(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public List<Project> getAll() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Project> getBySearchCriteria(SearchCriteria criteria) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getId(Project t) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isExist(Project t) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void save(Project t) throws SQLException {
+		String sqlQuery = "insert into ams.amc_project"
+						+ "(amc_id,prop_type_id,proj_client,proj_remarks,client_remarks,"
+						+ "proj_start_dt,proj_end_dt,estimate_value,loc_id) "
+						+ "values(?,?,?,?,?,?,?,?,?)";
+		PreparedStatement preparedStatement = connection.
+		
+	}
+
+	@Override
+	public void update(Project t, String... params) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Project t) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

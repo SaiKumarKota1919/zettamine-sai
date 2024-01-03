@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 									throws ServletException, IOException {
-		User user = new User(request.getParameter("userName"),request.getParameter("password"));
+		User user = new User(request.getParameter("userName").trim(),request.getParameter("password").trim());
 		
 		
 		try {

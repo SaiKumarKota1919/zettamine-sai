@@ -1,0 +1,32 @@
+package com.zm.ams.services.impl;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dao.impl.AppraisalLocationDao;
+import com.zm.ams.dto.AppraisalLoc;
+import com.zm.ams.marker.SearchCriteria;
+import com.zm.ams.services.LocationService;
+
+public class LocationServiceImpl implements LocationService{
+
+	private AmsDao<AppraisalLoc, SearchCriteria> amsDao = new AppraisalLocationDao();
+	@Override
+	public AppraisalLoc getLocationsByLocId(int id) throws SQLException {
+		List<AppraisalLoc> list = new ArrayList<AppraisalLoc>();
+		for(int i=0;i<locID.length;i++)
+		{
+		     Optional<AppraisalLoc> optional =	amsDao.get(locID[i]);
+		     if(!optional.isEmpty())
+		     {
+		    	 list.add(optional.get());
+		     }
+			
+		}
+		return list;
+	}
+
+}

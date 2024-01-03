@@ -1,0 +1,30 @@
+function sortResults(sortBy) {
+	var tableBody = document.getElementById('resultsBody');
+	var rows = tableBody.getElementsByTagName('tr');
+	var sortedRows = Array.from(rows).slice(1); // Exclude the header row
+
+	sortedRows.sort(function(rowA, rowB) {
+		var valueA = rowA.cells[getColumnIndex(sortBy)].innerText.toLowerCase();
+		var valueB = rowB.cells[getColumnIndex(sortBy)].innerText.toLowerCase();
+
+		if (valueA < valueB) return -1;
+		if (valueA > valueB) return 1;
+		return 0;
+	});
+
+	while (tableBody.firstChild) {
+		tableBody.removeChild(tableBody.firstChild); // Clear existing rows
+	}
+
+	sortedRows.forEach(function(row) {
+		tableBody.appendChild(row); // Re-append sorted rows
+	});
+}
+
+function getColumnIndex(columnName) {
+	var headerRow = document.querySelector('.search-results th:nth-child(1)'); // Adjust index if needed
+	var headers = Array.from(headerRow.parentNode.children);
+	return headers.findIndex(function(header) {
+		return header.innerText.toLowerCase() === columnName.toLowerCase();
+	});
+}

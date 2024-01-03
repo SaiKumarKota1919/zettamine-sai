@@ -70,8 +70,7 @@ public class AppraisalLocationController extends HttpServlet {
 					response.sendRedirect("home.jsp");
 				}
 				else {
-				//	HttpSession session = request.getSession();
-					//session.setAttribute("amcExist","true");
+					 request.setAttribute("amcExist","true");
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("add-appraisal-loc.jsp");
 					requestDispatcher.forward(request, response);
 					

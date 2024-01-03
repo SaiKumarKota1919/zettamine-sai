@@ -21,7 +21,8 @@
      <select id="AMC" name="amcName" required>
       <option value="" selected disabled>Select a AMC</option>
     <% for(String amcName : new AmcServiceImpl().getAmcNames())
-    {
+   {
+    	    
     %>
     <option value="<%=amcName%>"><%=amcName%></option>
     <%

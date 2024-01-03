@@ -34,7 +34,8 @@ public class AppraisalLocationServiceImpl implements AppraisalLocationService{
 
 	@Override
 	public boolean isExist(AppraisalLoc appraisalLoc) throws SQLException {
-
+		appraisalLoc.setCity(appraisalLoc.getCity().toUpperCase());
+		
 		return amsDao.isExist(appraisalLoc);
 	}
 

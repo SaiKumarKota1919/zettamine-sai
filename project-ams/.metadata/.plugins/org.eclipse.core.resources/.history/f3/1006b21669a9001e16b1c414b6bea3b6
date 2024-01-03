@@ -1,0 +1,5 @@
+package com.zm.ams.services;
+
+public interface LocationService {
+
+}

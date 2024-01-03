@@ -1,0 +1,28 @@
+package com.zm.ams.services.impl;
+
+import java.sql.SQLException;
+
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dao.impl.AmcAppraisalLocDao;
+import com.zm.ams.dto.AmcAppraisalLoc;
+import com.zm.ams.marker.SearchCriteria;
+import com.zm.ams.services.AmcAppraisalLocationService;
+
+public class AmcAppraisalLocServiceImpl implements AmcAppraisalLocationService{
+
+	AmsDao<AmcAppraisalLoc, SearchCriteria> amsDao = new AmcAppraisalLocDao();
+	
+	@Override
+	public void save(AmcAppraisalLoc amcAppraisalLoc) throws SQLException {
+		amsDao.save(amcAppraisalLoc);
+		
+		
+	}
+
+	@Override
+	public boolean isExist(AmcAppraisalLoc amcAppraisalLoc) throws SQLException {
+		
+		return amsDao.isExist(amcAppraisalLoc);
+	}
+
+}

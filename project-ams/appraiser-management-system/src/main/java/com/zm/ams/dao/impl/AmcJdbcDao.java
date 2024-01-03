@@ -42,7 +42,7 @@ public class AmcJdbcDao implements AmsDao<Amc, AmcSearchCriteria> {
 				"select amc_name,website,state,city,active,amc_id " + "from ams.amc where 1=1");
 		ResultSet resultSet = null;
 		Statement statement = connection.createStatement();
-		if (criteria.getState() != null && criteria.getCity() != null) {
+		if (criteria.getState() != null && criteria.getCity().length() != 0) {
 			int locId = new AppraisalLocationDao().getId(new AppraisalLoc(criteria.getState(), criteria.getCity()));
 
 			sqlQuery.append(" and amc_id in(select amc_id from ams.amc_appraisal_loc where loc_id "
@@ -57,14 +57,14 @@ public class AmcJdbcDao implements AmsDao<Amc, AmcSearchCriteria> {
 			sqlQuery.append(" and amc_id in(select amc_id from ams.amc_appraisal_loc"
 								+" where loc_id in(select loc_id from ams.appraisal_loc "
 								+ "where state= '"+criteria.getState()+"')) ");
-		} else if (criteria.getCity() != null) {
+		} else if (criteria.getCity().length() != 0) {
 			
 			sqlQuery.append(" and amc_id in(select amc_id from ams.amc_appraisal_loc"
 					+" where loc_id in(select loc_id from ams.appraisal_loc "
 					+ "where city='"+criteria.getCity().toUpperCase()+"')) ");
 
 		}
-		if (criteria.getAmcName() != null) {
+		if (criteria.getAmcName().length() != 0) {
 			amc.setAmcName(criteria.getAmcName().toUpperCase());
 
 			if (getId(amc) != 0) {

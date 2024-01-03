@@ -25,6 +25,7 @@ public class LogoutController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.removeAttribute("userName");
+		session.removeAttribute("user");
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		response.setHeader("Pragma", "no-cache"); 
 		response.setDateHeader("Expires", 0); 

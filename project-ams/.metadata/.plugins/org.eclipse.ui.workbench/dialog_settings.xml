@@ -21,4 +21,10 @@
 			<item value="C:\Users\Kota Sai Kumr\Downloads\apache-tomcat-10.1.17\webapps\examples\WEB-INF\lib"/>
 		</list>
 	</section>
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.wst.jsdt.ui.NewJSWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.wst.jsdt.ui.java"/>
+		</list>
+	</section>
 </section>

@@ -1,0 +1,16 @@
+package com.zm.ams.services.impl;
+
+import java.util.Map;
+
+import com.zm.ams.services.PropertyTypeService;
+
+public class PropertyTypeServiceImpl implements PropertyTypeService {
+
+	@Override
+	public Map<Integer, String> getAllPropertyType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}

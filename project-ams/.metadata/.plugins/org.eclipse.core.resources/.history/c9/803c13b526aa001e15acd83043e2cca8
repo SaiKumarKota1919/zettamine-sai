@@ -1,0 +1,117 @@
+package com.zm.ams.dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import com.zm.ams.config.JdbcConnectionFactory;
+import com.zm.ams.dao.AmsDao;
+import com.zm.ams.dto.AmcSearchCriteria;
+import com.zm.ams.dto.AppraisalLoc;
+import com.zm.ams.marker.SearchCriteria;
+
+public class AppraisalLocationDao implements AmsDao<AppraisalLoc,SearchCriteria> {
+
+	Connection connection;
+	public AppraisalLocationDao() {
+		connection= JdbcConnectionFactory.getJdbcConnection();
+	}
+	
+	@Override
+	public Optional<AppraisalLoc> get(int id) throws SQLException {
+		String sqlQuery = "select state,city from appraisal_loc where loc_id="+id;
+		ResultSet resultSet = connection.createStatement().executeQuery(sqlQuery);
+		Optional<AppraisalLoc> optional = Optional.empty();
+	if(resultSet.next())
+		{
+			optional.of(new AppraisalLoc(resultSet.getString(2), resultSet.getString(3)));
+		}
+	return optional;
+		
+	}
+	
+
+	@Override
+	public List<AppraisalLoc> getAll() throws SQLException {
+		
+		  List<AppraisalLoc> list = new ArrayList<AppraisalLoc>(); String sqlQuery =
+		  "select loc_id,state,city from appraisal_loc"; Statement statement =
+		  connection.createStatement(); ResultSet resultSet =
+		  statement.executeQuery(sqlQuery); while(resultSet.next()) 
+		  {
+			  list.add(new AppraisalLoc(resultSet.getInt(1)
+					  				, resultSet.getString(2),resultSet.getString(3)));
+		  }
+		 
+		return list;
+	}
+
+
+	@Override
+	public void save(AppraisalLoc t) throws SQLException  {
+		String sqlQuery = "insert into ams.appraisal_loc(state,city) values(?,?)";
+		PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+		preparedStatement.setString(1, t.getState());
+		preparedStatement.setString(2, t.getCity());
+		preparedStatement.executeUpdate();
+		
+	}
+
+	@Override
+	public void update(AppraisalLoc t, String... params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(AppraisalLoc t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getId(AppraisalLoc t) throws SQLException {
+		String sqlQuery = "select loc_id from ams.appraisal_loc where state=? and city =?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+		preparedStatement.setString(1, t.getState());
+		preparedStatement.setString(2, t.getCity());
+		ResultSet resultSet = preparedStatement.executeQuery();
+		if(resultSet.next())
+		{
+			return resultSet.getInt(1);
+		}
+		return 0;
+	}
+
+	@Override
+	public List<AppraisalLoc> getBySearchCriteria(SearchCriteria criteria) throws SQLException {
+		
+		
+		return null;
+	}
+
+	@Override
+	public boolean isExist(AppraisalLoc t) throws SQLException {
+		String sqlQuery = "select * from ams.appraisal_loc where state=? and city=?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+		preparedStatement.setString(1, t.getState());
+		preparedStatement.setString(2, t.getCity());
+		ResultSet resultSet = preparedStatement.executeQuery();
+		
+		if(resultSet.next())
+		{
+			return true;
+		}
+		
+		
+		return false;
+	}
+	
+	
+
+}

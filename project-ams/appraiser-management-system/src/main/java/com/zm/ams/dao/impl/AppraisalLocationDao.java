@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,14 +23,41 @@ public class AppraisalLocationDao implements AmsDao<AppraisalLoc,SearchCriteria>
 	}
 	
 	@Override
-	public Optional<AppraisalLoc> get(int id) {
-		return Optional.empty();
+	public Optional<AppraisalLoc> get(int id) throws SQLException {
+		String sqlQuery = "select state,city from ams.appraisal_loc where loc_id="+id;
+		ResultSet resultSet = connection.createStatement().executeQuery(sqlQuery);
+		Optional<AppraisalLoc> optional = Optional.empty();
+	if(resultSet.next())
+		{
+			optional.of(new AppraisalLoc(resultSet.getString(1), resultSet.getString(2)));
+		}
+	return optional;
+		
+	}
+	public AppraisalLoc getById(int id) throws SQLException
+	{
+		String sqlQuery = "select state,city from ams.appraisal_loc where loc_id="+id;
+		ResultSet resultSet = connection.createStatement().executeQuery(sqlQuery);
+	if(resultSet.next())
+		{
+			return new AppraisalLoc(resultSet.getString(1), resultSet.getString(2));
+		}
+			return null;
 	}
 
 	@Override
-	public List<AppraisalLoc> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AppraisalLoc> getAll() throws SQLException {
+		
+		  List<AppraisalLoc> list = new ArrayList<AppraisalLoc>(); String sqlQuery =
+		  "select loc_id,state,city from appraisal_loc"; Statement statement =
+		  connection.createStatement(); ResultSet resultSet =
+		  statement.executeQuery(sqlQuery); while(resultSet.next()) 
+		  {
+			  list.add(new AppraisalLoc(resultSet.getInt(1)
+					  				, resultSet.getString(2),resultSet.getString(3)));
+		  }
+		 
+		return list;
 	}
 
 
@@ -70,7 +99,8 @@ public class AppraisalLocationDao implements AmsDao<AppraisalLoc,SearchCriteria>
 
 	@Override
 	public List<AppraisalLoc> getBySearchCriteria(SearchCriteria criteria) throws SQLException {
-		// TODO Auto-generated method stub
+		
+		
 		return null;
 	}
 
