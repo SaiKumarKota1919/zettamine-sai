@@ -5,6 +5,7 @@ import java.util.IntSummaryStatistics;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class StreamOpOnStudent {
@@ -54,6 +55,11 @@ public class StreamOpOnStudent {
 		Map<String, Long> countByDeptMap = list.stream()
 								.collect(Collectors.groupingBy(s->s.getDepartmantName(),Collectors.counting()));
 		System.out.println(countByDeptMap);
+		
+		System.out.println("---------------------------------------------------");
+		
+		List<Entry<String, Long>> list2 = countByDeptMap.entrySet().stream().toList();
+		list2.forEach(s->System.out.println(s));
 		
 		//Find the list of students whose age is less than 30
 		//Find the list of students whose rank is in between 50 and 100
